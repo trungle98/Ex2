@@ -115,14 +115,14 @@ public class InsuranceServiceImpl implements InsuranceService {
 	/*
 	 * UPDATE INSURANCE FOR CAR HAVEN'T BOUGHT INSURANCE
 	 */
-	public boolean BuyInsurance(String bks, int maBH) {
+	public boolean BuyInsurance(String bks, int maBH, int soLuongConLai) {
 		System.out.println("FUNCTION BuyInsurance!");
 		String sql = "UPDATE Car SET Car.MABH=? WHERE Car.BKS=?";
 		try {
 			PreparedStatement ps = (PreparedStatement) cnn.prepareStatement(sql);
 			ps.setInt(1, maBH);
 			ps.setString(2, bks);
-			ResultSet rs = ps.executeQuery();
+			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
